@@ -1,9 +1,55 @@
 from bs4 import BeautifulSoup
-import pandas as pd
+import re
+from classes import *
 
-html_content = ""
-with open("sis.html", mode="r", encoding="utf-8") as html_file:
-    html_content = html_file.read()
 
-soup = BeautifulSoup(html_content, "html.parser")
-table = soup.find("table", {"class": "table table-bordered table-striped", "id": "tb"})
+def get_type(cell):
+    whole_text = cell.get_text()
+    types = re.findall(r"\[([LCW])\]", whole_text)
+    if len(types) == 0:
+        return ClassType.Undefined
+    try:
+        return ClassType(types[0])
+    except ValueError as e:
+        print(f"Error: wrong char for ClassType inside: {types[0]}")
+        return ClassType.Undefined
+
+
+def main():
+    html_content = ""
+    with open("sis.html", mode="r", encoding="utf-8") as html_file:
+        html_content = html_file.read()
+
+    soup = BeautifulSoup(html_content, "html.parser")
+    table = soup.find(
+        "table", {"class": "table table-bordered table-striped", "id": "tb"}
+    )
+    # iterate over all rows
+    hour = 6
+    schedule = Schedule()
+    for row in table.find_all("tr"):
+        day = -1
+        for cell in row.find_all("td"):
+            day += 1
+            # get the subject name of the class
+            subject = cell.find("a", {"class": "subject_name"})
+            # abort if cell is empty
+            if subject == None:
+                continue
+            subject = re.sub("\s*-\s*\w*", "", subject.get_text())
+            room_text = cell.find("a", {"class": "room_name"})
+            room = ""
+            if room_text != None:
+                room = room_text.get_text()
+            type = get_type(cell)
+            time = Time(day - 1, hour, room)
+            subject = Subject(subject, type)
+            schedule.add_class(subject, time)
+        hour += 1
+    with open("output_time_table.niceplan", "w", encoding="utf-8") as f:
+        data = schedule.export_json_niceplan()
+        json.dump(data, f, separators=(",", ":"), ensure_ascii=False)
+
+
+if __name__ == "__main__":
+    main()
