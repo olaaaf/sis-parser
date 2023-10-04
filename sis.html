@@ -1,0 +1,438 @@
+<script type="" language="">console.log(':1298655:');</script><!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIS</title>
+    <meta name="author" content="Marcin Gadziejewski">
+    <meta name="theme-color" content="#000000">
+    <meta name="msapplication-navbutton-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000000">
+    <link href="/Content/themes/base/jquery-ui.css" rel="stylesheet"/>
+<link href="/Content/bootstrap.css" rel="stylesheet"/>
+<link href="/Content/themes/base/core.css" rel="stylesheet"/>
+<link href="/Content/themes/base/datepicker.css" rel="stylesheet"/>
+<link href="/Content/themes/base/theme.css" rel="stylesheet"/>
+<link href="/Content/site.css" rel="stylesheet"/>
+<link href="/Content/MyElements.css" rel="stylesheet"/>
+
+    <script src="/Scripts/modernizr-2.6.2.js"></script>
+
+    <script src="/Scripts/jquery-1.12.4.js"></script>
+<script src="/Scripts/jquery-ui-1.12.1.js"></script>
+
+    <link href="/Content/fontawesome-all.css" rel="stylesheet"/>
+
+    
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            $('.container.body-content').fadeIn();
+        });
+    </script>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-image: none !important; background: linear-gradient(80deg, #0a1c2b, #052f52) !important">
+        <div class="container">
+            <div class="img_logos">
+                <img src="/Images/logo/reverse.png" style="height:80px; margin-top:15px; cursor:pointer; " class="left" onclick="window.location = 'http://eti.pg.edu.pl'" />
+                <img src="/Images/logo/newlogo2023.png" style="height:80px; margin-top:15px; cursor:pointer;" class="navbar-right" onclick="window.open('https://eti.pg.edu.pl', '_blank');" />
+                <hr style="margin:5px 0 5px 0; padding:0; border-top:1px solid #808080" />
+            </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                
+                <b><a class="navbar-brand" href="/">GŁÓWNA<span class="under">HOME</span></a></b>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SALA <span class="caret"></span><span class="under">CLASSROOM</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Planner/ScheduleForRoom/AUD.KOW.">Sala<span class="under_dropdown"> / Classroom</span></a></li>
+                            <li><a href="/Advanced">Grafik zbiorczy<span class="under_dropdown"> / Aggregate list</span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Teacher/ScheduleForTeacher/Jerzy/Konorski">Przykładowy grafik prowadzącego - J. Konorski</a></li>
+                            <li><a href="/Planner/SearchFreeRoom">Szukaj sal<span class="under_dropdown"> / Search classrooms</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">STUDENT <span class="caret"></span><span class="under">STUDENT</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Group/SelectGroup">Plany stacjonarne<span class="under_dropdown"> / Full-time studies</span></a></li>
+                            <li><a href="/Advanced/ScheduleForSemester/1">Stac. grafiki zbiorcze<span class="under_dropdown"> / All groups full-time studies</span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Week/SelectGroup">Niestacjonarne<span class="under_dropdown"> / Part-time studies</span></a></li>
+                            <li><a href="/Week/WeekSchedule">Niestacjonarne - sale w tyg.<span class="under_dropdown"> / Part-time studies - rooms by dates</span></a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Students">Informacje<span class="under_dropdown"></span></a></li>
+                            
+                            <li><a href="/Students/Streams">Strumienie<span class="under_dropdown"></span></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">WYSZUKIWANIE <span class="caret"></span><span class="under">SEARCH</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Search/Search">Szukaj danych <span class="under_dropdown"> / Data search</span></a></li>
+                            <li><a href="/Planner/SearchFreeRoom">Szukaj sal <span class="under_dropdown"> / Classrooms search</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">REZERWACJE <span class="caret"></span><span class="under">RESERVATIONS</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Planner/SearchFreeRoom">Szukaj sal <span class="under_dropdown"> / Search classrooms</span></a></li>
+                            
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">KATEDRY <span class="caret"></span><span class="under">DEPARTMENTS</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Department/RoomsIndex">Sale w katedrach <span class="under_dropdown"> / Classrooms in departments</span></a></li>
+                            <li><a href="/Department/TeachersIndex">Nauczyciele w katedrach <span class="under_dropdown"> / Teachers in departments</span></a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/Week/Postgraduate">PODYPLOMOWE<span class="under">POSTGRADUATE</span></a></li>
+                </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="https://logowanie.pg.edu.pl/logout">1298655<span class="under">LOGOUT</span> </a>
+                </li>
+            </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        
+<div class="white_radius_div_center">
+                <a href="/Planner/ScheduleForGroup/E2105AD-0/1"><span class="glyphicon glyphicon-random"></span>&nbsp;/Planner/ScheduleForGroup/E2105AD-0/1&nbsp;</a>
+                <a href="/Error/NotFound"><span class="glyphicon glyphicon-random"></span>&nbsp;/Error/NotFound&nbsp;</a>
+                <a href="/Error/NotFound"><span class="glyphicon glyphicon-random"></span>&nbsp;/Error/NotFound&nbsp;</a>
+                <a href="/Planner/ScheduleForGroup/E2105AD-0/2"><span class="glyphicon glyphicon-random"></span>&nbsp;/Planner/ScheduleForGroup/E2105AD-0/2&nbsp;</a>
+                <a href="/Error/NotFound"><span class="glyphicon glyphicon-random"></span>&nbsp;/Error/NotFound&nbsp;</a>
+
+</div>
+        <br />
+        
+        
+<script>
+    function printGrid() {
+        var gridData = document.getElementById('tb');
+        var drukowanaSala = document.getElementById('groupName');
+        var windowUrl = 'Wydruk grafiku';
+
+        //set print document name for gridview
+        var uniqueName = new Date();
+        //var windowName = 'Wydruk_' + uniqueName.getTime();
+        var windowName = "Wydruk";
+
+        var prtWindow = window.open(windowUrl, windowName, 'left=100,top=100,right=100,bottom=100,width=700,height=500');
+        prtWindow.document.write('<!DOCTYPE HTML><html style="background:white;"><head>');
+        //prtWindow.document.write('<link rel="stylesheet" href="http://'+document.domain+(location.port ? ':'+location.port: '')+'/Content/site.css" type="text/css" />');
+        prtWindow.document.write('</head>');
+        prtWindow.document.write('<body style="background:white; !important">');
+        // ustawienie styli do drukowania
+        prtWindow.document.write('<style> #tb td, #tb th {white-space: nowrap; width: 1%; } table {border-collapse: collapse;} td {border: 1px solid #dadada; !important} .tb td, #tb, PlanGrupyView th{border-collapse: collapse; border: 1px solid silver; font-family: Arial; font-size: 5.5pt; text-align: center; padding: 0px 2px 0px 0px;} a {color: #333; outline: none; padding-left: 2px; padding-right: 2px; text-decoration: none; }</style>');
+        prtWindow.document.write('<div style="text-align:center; margin:0; padding:0;"><h6 style="background-color:white; font-family:Arial; color:#1a65a7; font-size: 0.8em; padding:0; margin-bottom:3px;">' + drukowanaSala.textContent + '</h6></div>');
+        //prtWindow.document.write('<div class="rounded_corners" style="width: 1065px">');
+        prtWindow.document.write(gridData.outerHTML);
+        //prtWindow.document.write('</div>');
+        prtWindow.document.write('</body></html>');
+        prtWindow.document.close();
+        prtWindow.focus();
+        prtWindow.print();
+        prtWindow.close();
+    }
+</script>
+
+<style>
+    table {
+        table-layout: fixed;
+    }
+
+    td:first-child {
+        width: 30%;
+    }
+
+    td:last-child {
+        width: 70%;
+    }
+
+    .indiv {
+        /*box-shadow: 0px 2px 10px;*/
+        padding: 0 2px 0 2px;
+        /*overflow: auto;*/
+        vertical-align: middle !important;
+    }
+
+    td {
+        padding: 0 !important;
+        word-wrap: break-word;
+    }
+</style>
+
+<div class="blue_div">
+    <div class="center-div">
+        <a style="margin:0 0 0 5px;" onclick="printGrid()" class="btn btn-xs btn-primary pull-right"><span class="glyphicon glyphicon-print" aria-hidden="true"></span> Wydruk</a>
+        <h3 id="groupName" style="text-align:center">Automatyka, cybernetyka i robotyka (spec. Systemy Decyzyjne) / gr. 1</h3>
+    </div>
+    <table class="table table-bordered table-striped" id="tb">
+        <tr>
+            <th style="width:50px; background-color: #428bca; color: white;">
+                
+            </th>
+            <th style="background-color: #428bca; color: white;">
+                Poniedziałek / Monday
+            </th>
+            <th style="background-color: #428bca; color: white;">
+                Wtorek / Tuesday
+            </th>
+            <th style="background-color: #428bca; color: white;">
+                Środa / Wednesday
+            </th>
+            <th style="background-color: #428bca; color: white;">
+                Czwartek / Thursday
+            </th>
+            <th style="background-color: #428bca; color: white;">
+                Piątek / Friday
+            </th>
+        </tr>
+
+            <tr>
+                <td>
+                    07:00
+                </td>
+
+                    <td></td>
+
+                    <td></td>
+
+
+                    <td></td>
+
+<td class='indiv' style='background-color:#FFE9FA'><b><a class='room_name' href='/Planner/ScheduleForRoom/NE160'>NE 160</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Współczesne środowiska programowania</a><br>mgr inż. Kajetan Kruczkowski<br><b>od 07.12.2023</b></td>
+                    <td></td>
+            </tr>
+            <tr>
+                <td>
+                    08:00
+                </td>
+
+<td class='indiv' style='background-color:#F8E6CE'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA63'>EA 63</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Podstawy robotyki - laboratorium</a><br>dr inż. Marek Tatara</td>
+<td class='indiv' style='background-color:#F8E6CE'><b><a class='room_name' href='/Planner/ScheduleForRoom/NE239'>NE 239</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Współczesne narzędzia obliczeniowe I</a><br>dr inż. Michał Czubenko<br><b>od 28.11.2023</b></td>
+
+<td class='indiv' style='background-color:#D4EFFF'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA31'>EA 31</a></b><br><b>[W]</b> <a class='subject_name' href='#'>Mikrosterowniki i mikrosystemy rozprosz</a><br>dr hab. Zbigniew Czaja</td>
+<td class='indiv' style='background-color:#FFE9FA'><b><a class='room_name' href='/Planner/ScheduleForRoom/NE160'>NE 160</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Współczesne środowiska programowania</a><br>mgr inż. Kajetan Kruczkowski<br><b>od 07.12.2023</b></td>
+                    <td></td>
+            </tr>
+            <tr>
+                <td>
+                    09:00
+                </td>
+
+<td class='indiv' style='background-color:#F8E6CE'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA63'>EA 63</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Podstawy robotyki - laboratorium</a><br>dr inż. Marek Tatara</td>
+<td class='indiv' style='background-color:#F8E6CE'><b><a class='room_name' href='/Planner/ScheduleForRoom/NE239'>NE 239</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Współczesne narzędzia obliczeniowe I</a><br>dr inż. Michał Czubenko<br><b>od 28.11.2023</b></td>
+
+<td class='indiv' style='background-color:#D4EFFF'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA31'>EA 31</a></b><br><b>[W]</b> <a class='subject_name' href='#'>Mikrosterowniki i mikrosystemy rozprosz</a><br>dr hab. Zbigniew Czaja</td>
+<td class='indiv' style='background-color:#F8E6CE'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA31'>EA 31</a></b><br><b>[W]</b> <a class='subject_name' href='#'>Architektura systemów komputerowych</a><br>dr inż. Paweł Raczyński</td>
+<td class='indiv' style='background-color:#FFE9E9'><b><a class='room_name' href='/Planner/ScheduleForRoom/SPNJOA2'>SPNJO A2</a></b><br><b>[C]</b> <a class='subject_name' href='#'>Język angielski IV</a><br>mgr Joanna Pawlik</td>            </tr>
+            <tr>
+                <td>
+                    10:00
+                </td>
+
+<td class='indiv' style='background-color:#D4EFFF'><b><a class='room_name' href='/Planner/ScheduleForRoom/NEAUD.2'>NE AUD.2</a></b><br><b>[W]</b> <a class='subject_name' href='#'>Wstęp do sieci komputerowych</a><br>dr inż. Krzysztof Nowicki</td>
+                    <td></td>
+
+
+<td class='indiv' style='background-color:#EDEDED'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA63'>EA 63</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Podstawy robotyki - laboratorium</a><br>dr inż. Marek Tatara</td>
+<td class='indiv' style='background-color:#F8E6CE'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA31'>EA 31</a></b><br><b>[W]</b> <a class='subject_name' href='#'>Architektura systemów komputerowych</a><br>dr inż. Paweł Raczyński</td>
+<td class='indiv' style='background-color:#FFE9E9'><b><a class='room_name' href='/Planner/ScheduleForRoom/SPNJOA2'>SPNJO A2</a></b><br><b>[C]</b> <a class='subject_name' href='#'>Język angielski IV</a><br>mgr Joanna Pawlik</td>            </tr>
+            <tr>
+                <td>
+                    11:00
+                </td>
+
+<td class='indiv' style='background-color:#D4EFFF'><b><a class='room_name' href='/Planner/ScheduleForRoom/NEAUD.2'>NE AUD.2</a></b><br><b>[W]</b> <a class='subject_name' href='#'>Wstęp do sieci komputerowych</a><br>dr inż. Krzysztof Nowicki</td>
+<td class='indiv' style='background-color:#D4EFFF'><b><a class='room_name' href='/Planner/ScheduleForRoom/AUD.NOV'>AUD.NOV</a></b><br><b>[P]</b> <a class='subject_name' href='#'>PROJEKT GRUPOWY I</a><br>dr inż. Sławomir Gajewski</td>
+
+<td class='indiv' style='background-color:#EDEDED'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA63'>EA 63</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Podstawy robotyki - laboratorium</a><br>dr inż. Marek Tatara</td>
+                        <td><b>NE AUD.2</b><br><b>[W]</b> <a class='subject_name' href='#'>Zasady przedsiębiorczości i zarządzania</a><br>dr hab. Marcin Gnyba</td>
+
+<td class='indiv' style='background-color:#FCFF9C'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA31'>EA 31</a></b><br><b>[W]</b> <a class='subject_name' href='#'>Współczesne środowiska programowania</a><br>dr hab. Tomasz Stefański<br><b>do 24.11.2023</b><br><b>EA 204</b><br><b>[L]</b> <a class='subject_name' href='#'>Wstęp do sieci komputerowych</a><br>dr inż. Krzysztof Nowicki<br><b>od 01.12.2023</b></td>            </tr>
+            <tr>
+                <td>
+                    12:00
+                </td>
+
+<td class='indiv' style='background-color:#EDEDED'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA32'>EA 32</a></b><br><b>[W]</b> <a class='subject_name' href='#'>Bazy danych</a><br>dr inż. Adam Bujnowski</td>
+<td class='indiv' style='background-color:#D4EFFF'><b><a class='room_name' href='/Planner/ScheduleForRoom/AUD.NOV'>AUD.NOV</a></b><br><b>[P]</b> <a class='subject_name' href='#'>PROJEKT GRUPOWY I</a><br>dr inż. Sławomir Gajewski</td>
+
+<td class='indiv' style='background-color:#FFE9E9'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA532'>EA 532</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Sterowanie analogowe - laboratorium</a><br>dr inż. Tomasz Białaszewski</td>
+<td class='indiv' style='background-color:#EDEDED'><b><a class='room_name' href='/Planner/ScheduleForRoom/NE238'>NE 238</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Bazy danych</a><br>mgr inż. Magdalena Madej<br><b>co 2 tygodnie</b></td>
+<td class='indiv' style='background-color:#FCFF9C'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA31'>EA 31</a></b><br><b>[W]</b> <a class='subject_name' href='#'>Współczesne środowiska programowania</a><br>dr hab. Tomasz Stefański<br><b>do 24.11.2023</b><br><b>EA 204</b><br><b>[L]</b> <a class='subject_name' href='#'>Wstęp do sieci komputerowych</a><br>dr inż. Krzysztof Nowicki<br><b>od 01.12.2023</b></td>            </tr>
+            <tr>
+                <td>
+                    13:00
+                </td>
+
+<td class='indiv' style='background-color:#EDEDED'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA32'>EA 32</a></b><br><b>[W]</b> <a class='subject_name' href='#'>Bazy danych</a><br>dr inż. Adam Bujnowski</td>
+                        <td><b>EA 32</b><br><b>[W]</b> <a class='subject_name' href='#'>Metody numeryczne</a><br>mgr inż. Sebastian Dziedziewicz</td>
+
+
+<td class='indiv' style='background-color:#FFE9E9'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA532'>EA 532</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Sterowanie analogowe - laboratorium</a><br>dr inż. Tomasz Białaszewski</td>
+<td class='indiv' style='background-color:#EDEDED'><b><a class='room_name' href='/Planner/ScheduleForRoom/NE238'>NE 238</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Bazy danych</a><br>mgr inż. Magdalena Madej<br><b>co 2 tygodnie</b></td>
+                    <td></td>
+            </tr>
+            <tr>
+                <td>
+                    14:00
+                </td>
+
+<td class='indiv' style='background-color:#FFE9E9'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA07'>EA 07</a></b><br><b>[W]</b> <a class='subject_name' href='#'>Współczesne narzędzia obliczeniowe I</a><br>dr inż. Michał Czubenko<br><b>do 20.11.2023</b><br><b>EA 204</b><br><b>[L]</b> <a class='subject_name' href='#'>Wstęp do sieci komputerowych</a><br>dr inż. Krzysztof Nowicki<br><b>od 27.11.2023</b></td>
+<td class='indiv' style='background-color:#EDEDED'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA532'>EA 532</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Sterowanie analogowe - laboratorium</a><br>dr inż. Tomasz Białaszewski<br><b>NE 159</b><br><b>[L]</b> <a class='subject_name' href='#'>Współczesne narzędzia obliczeniowe I</a><br>dr inż. Michał Czubenko<br><b>od 28.11.2023</b></td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+            </tr>
+            <tr>
+                <td>
+                    15:00
+                </td>
+
+<td class='indiv' style='background-color:#FFE9E9'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA07'>EA 07</a></b><br><b>[W]</b> <a class='subject_name' href='#'>Współczesne narzędzia obliczeniowe I</a><br>dr inż. Michał Czubenko<br><b>do 20.11.2023</b><br><b>EA 204</b><br><b>[L]</b> <a class='subject_name' href='#'>Wstęp do sieci komputerowych</a><br>dr inż. Krzysztof Nowicki<br><b>od 27.11.2023</b></td>
+<td class='indiv' style='background-color:#EDEDED'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA532'>EA 532</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Sterowanie analogowe - laboratorium</a><br>dr inż. Tomasz Białaszewski<br><b>NE 159</b><br><b>[L]</b> <a class='subject_name' href='#'>Współczesne narzędzia obliczeniowe I</a><br>dr inż. Michał Czubenko<br><b>od 28.11.2023</b></td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+            </tr>
+            <tr>
+                <td>
+                    16:00
+                </td>
+
+                    <td></td>
+
+                        <td><b>NE 160</b><br><b>[L]</b> <a class='subject_name' href='#'>Sztuczna inteligencja w automatyce - la</a><br>mgr inż. Piotr Kopa-Ostrowski</td>
+
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+            </tr>
+            <tr>
+                <td>
+                    17:00
+                </td>
+
+                    <td></td>
+
+                        <td><b>NE 160</b><br><b>[L]</b> <a class='subject_name' href='#'>Sztuczna inteligencja w automatyce - la</a><br>mgr inż. Piotr Kopa-Ostrowski</td>
+
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+            </tr>
+            <tr>
+                <td>
+                    18:00
+                </td>
+
+<td class='indiv' style='background-color:#FFE9FA'><b><a class='room_name' href='/Planner/ScheduleForRoom/NE160'>NE 160</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Współczesne środowiska programowania</a><br>mgr inż. Kajetan Kruczkowski<br><b>od 27.11.2023</b></td>
+<td class='indiv' style='background-color:#F8E6CE'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA108'>EA 108</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Przetworniki wielkości nieelektrycznych</a><br>dr inż. Paweł Kalinowski</td>
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+            </tr>
+            <tr>
+                <td>
+                    19:00
+                </td>
+
+<td class='indiv' style='background-color:#FFE9FA'><b><a class='room_name' href='/Planner/ScheduleForRoom/NE160'>NE 160</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Współczesne środowiska programowania</a><br>mgr inż. Kajetan Kruczkowski<br><b>od 27.11.2023</b></td>
+<td class='indiv' style='background-color:#F8E6CE'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA108'>EA 108</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Przetworniki wielkości nieelektrycznych</a><br>dr inż. Paweł Kalinowski</td>
+
+<td class='indiv' style='background-color:#FCFF9C'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA07'>EA 07</a></b><br><b>[P]</b> <a class='subject_name' href='#'>PROJEKT GRUPOWY I</a><br>dr inż. Janusz Kozłowski</td>
+                    <td></td>
+
+                    <td></td>
+            </tr>
+            <tr>
+                <td>
+                    20:00
+                </td>
+
+                    <td></td>
+
+<td class='indiv' style='background-color:#F8E6CE'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA108'>EA 108</a></b><br><b>[L]</b> <a class='subject_name' href='#'>Przetworniki wielkości nieelektrycznych</a><br>dr inż. Paweł Kalinowski</td>
+
+<td class='indiv' style='background-color:#FCFF9C'><b><a class='room_name' href='/Planner/ScheduleForRoom/EA07'>EA 07</a></b><br><b>[P]</b> <a class='subject_name' href='#'>PROJEKT GRUPOWY I</a><br>dr inż. Janusz Kozłowski</td>
+                    <td></td>
+
+                    <td></td>
+            </tr>
+            <tr>
+                <td>
+                    21:00
+                </td>
+
+                    <td></td>
+
+                    <td></td>
+
+
+                    <td></td>
+
+                    <td></td>
+
+                    <td></td>
+            </tr>
+
+    </table>
+
+</div>
+
+
+
+    </div>
+    <footer style="background-image: none !important; background: linear-gradient(80deg, #0a1c2b, #052f52) !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <br />
+                    <h4><span class="label label-default" style="background-color:white; padding: 0.26em .6em .3em; color:black;"> Tomasz Pakszys </span></h4>
+                    <h4 font-weight:bold;">
+                        tomasz.pakszys@eti.pg.edu.pl<br />
+                        58 348 61 30
+                    </h4>
+                </div>
+            </div>
+            <br />
+        </div>
+    </footer>
+    <script src="/Scripts/bootstrap.js"></script>
+<script src="/Scripts/respond.js"></script>
+
+    
+
+</body>
+</html>
