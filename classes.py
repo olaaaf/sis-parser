@@ -1,5 +1,6 @@
 from enum import Enum
 import json
+import uuid
 
 
 class ClassType(Enum):
@@ -72,3 +73,56 @@ class Schedule:
                 timetable_json["lessons"].append(lesson_entry)
 
         return timetable_json
+    
+    def export_icalendar(self):
+        timetable_ical = [
+        "BEGIN:VCALENDAR",
+        "PRODID:SIS-PARSER",
+        "VERSION:2.0",
+        "CALSCALE:GREGORIAN",
+        "METHOD:PUBLISH",
+        "BEGIN:VTIMEZONE",
+        "TZID:Europe/Warsaw",
+        "X-LIC-LOCATION:Europe/Warsaw",
+        "BEGIN:DAYLIGHT",
+        "TZOFFSETFROM:+0100",
+        "TZOFFSETTO:+0200",
+        "TZNAME:CEST",
+        "DTSTART:19700329T020000",
+        "RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU",
+        "END:DAYLIGHT",
+        "BEGIN:STANDARD",
+        "TZOFFSETFROM:+0200",
+        "TZOFFSETTO:+0100",
+        "TZNAME:CET",
+        "DTSTART:19701025T030000",
+        "RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU",
+        "END:STANDARD",
+        "END:VTIMEZONE"]
+        # For ICalendar COLOR HAVE TO BE A CSS COLOR NAME
+        for subject, times in self.subjects_.items():
+            color = "#4361eeff"
+            if subject.class_type == ClassType.Laboratory:
+                color = "#f72585ff"
+            if subject.class_type == ClassType.Interactive:
+                color = "#7209b7ff"
+            if subject.class_type == ClassType.Lecture:
+                color = "#3a0ca3ff"
+            for time in times:
+                lesson_entry = [
+                    "BEGIN:VEVENT",
+                    "DTSTAMP:19960704T120000Z",
+                    f"SUMMARY:{subject.name}[{subject.class_type.value}]{time.room}",
+                    f"UID: {uuid.uuid4()}",
+                    "STATUS:CONFIRMED",
+                    "TRANSP:OPAQUE",
+                    "RRULE:FREQ=WEEKLY;BYDAY=MO",
+                    f"COLOR:{color}",
+                    f"DTSTART;TZID=Europe/Warsaw:{str(20231002+time.weekday)}T{'' if time.start_time > 9 else '0'}{time.start_time}1500",
+                    f"DTEND;TZID=Europe/Warsaw:{str(20231002+time.weekday)}T{'' if time.start_time >= 9 else '0'}{time.start_time + 1}1500",
+                    "END:VEVENT"]
+                timetable_ical += lesson_entry
+                
+        timetable_ical.append("END:VCALENDAR")
+        
+        return timetable_ical

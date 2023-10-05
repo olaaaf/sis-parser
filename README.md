@@ -6,6 +6,7 @@ compatible format for your class schedule app.
 Apps supported right now:
 
 - Nice plan (iOS)
+- Most apps (those with *.ics import (Google, Outlook, etc.))
 
 ## Usage
 
