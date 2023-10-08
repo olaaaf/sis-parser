@@ -49,7 +49,11 @@ def main():
     with open("output_time_table.niceplan", "w", encoding="utf-8") as f:
         data = schedule.export_json_niceplan()
         json.dump(data, f, separators=(",", ":"), ensure_ascii=False)
-
+         
+    with open("output_time_table.ics", "w", encoding="utf-8") as f:
+        data_ical = schedule.export_icalendar()
+        for cell in data_ical:
+            f.write(cell + '\n')
 
 if __name__ == "__main__":
     main()
