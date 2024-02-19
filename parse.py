@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import re
 from classes import *
+import argparse 
 
 
 def get_type(cell):
@@ -16,8 +17,16 @@ def get_type(cell):
 
 
 def main():
+    parser = argparse.ArgumentParser(
+            prog="SIS Plan parser",
+            description="Convert class schedule from the site https://sis.eti.pg.edu.pl\nto other formats"
+            )
+    parser.add_argument("filename")
+    parser.add_argument("-n", "--niceplan", action='store_true', help="Should a niceplan file be generated?")
+    parser.add_argument("-i", "--ical", action='store_true', help="Should an ical file be generated?")
     html_content = ""
-    with open("sis.html", mode="r", encoding="utf-8") as html_file:
+    args = parser.parse_args()
+    with open(args.filename, mode="r", encoding="utf-8") as html_file:
         html_content = html_file.read()
 
     soup = BeautifulSoup(html_content, "html.parser")
@@ -36,7 +45,7 @@ def main():
             # abort if cell is empty
             if subject == None:
                 continue
-            subject = re.sub("\s*-\s*\w*", "", subject.get_text())
+            subject = re.sub(r"\s*-\s*\w*", "", subject.get_text())
             room_text = cell.find("a", {"class": "room_name"})
             room = ""
             if room_text != None:
@@ -46,14 +55,16 @@ def main():
             subject = Subject(subject, type)
             schedule.add_class(subject, time)
         hour += 1
-    with open("output_time_table.niceplan", "w", encoding="utf-8") as f:
-        data = schedule.export_json_niceplan()
-        json.dump(data, f, separators=(",", ":"), ensure_ascii=False)
-         
-    with open("output_time_table.ics", "w", encoding="utf-8") as f:
-        data_ical = schedule.export_icalendar()
-        for cell in data_ical:
-            f.write(cell + '\n')
+    if args.niceplan:
+        with open("output_time_table.niceplan", "w", encoding="utf-8") as f:
+            data = schedule.export_json_niceplan()
+            json.dump(data, f, separators=(",", ":"), ensure_ascii=False)
+    
+    if args.ical:
+        with open("output_time_table.ics", "w", encoding="utf-8") as f:
+            data_ical = schedule.export_icalendar()
+            for cell in data_ical:
+                f.write(cell + '\n')
 
 if __name__ == "__main__":
     main()
