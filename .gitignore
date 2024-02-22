@@ -2,3 +2,6 @@
 .vscode/
 __pycache__/
 *.pyc
+.python-version
+*.html
+.DS_Store

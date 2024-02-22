@@ -120,7 +120,7 @@ class Schedule:
                     "RRULE:FREQ=WEEKLY",
                     f"COLOR:{color}",
                     f"DTSTART;TZID=Europe/Warsaw:{str(20231002+time.weekday)}T{'' if time.start_time > 9 else '0'}{time.start_time}1500",
-                    f"DTEND;TZID=Europe/Warsaw:{str(20231002+time.weekday)}T{'' if time.start_time >= 9 else '0'}{time.start_time + time.duration}0000",
+                    f"DTEND;TZID=Europe/Warsaw:{str(20231002+time.weekday)}T{'' if time.start_time + time.duration >= 9 else '0'}{time.start_time + time.duration}0000",
                     f"LOCATION:{time.room}",
                     "END:VEVENT"]
                 timetable_ical += lesson_entry

@@ -17,12 +17,11 @@ git clone https://github.com/olaaaf/sis-parser.git
 ```
 
 Download the `.html` site file (single HTML file) into the project directory.
-Name it `sis.html`
 
 ```cmd
 cd sis-parser
 pip install -r requirements.txt
-python3 parse.py
+python3 parse.py --help
 ```
 
 Move the desired ouput file to your phone.
