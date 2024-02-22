@@ -66,7 +66,7 @@ class Schedule:
                 lesson_entry = {
                     "subject": subject.name,
                     "startTime": f"01-01-1970 {time.start_time}:15:00",
-                    "endTime": f"01-01-1970 {time.start_time + 1}:00:00",
+                    "endTime": f"01-01-1970 {time.start_time + time.duration}:00:00",
                     "hexColor": color,  # You can customize the color
                     "room": time.room,
                     "day": f"{time.weekday}",
@@ -128,3 +128,34 @@ class Schedule:
         timetable_ical.append("END:VCALENDAR")
         
         return timetable_ical
+    
+    def merge_blocks(self):
+        """
+        Merges all same class blocks that are after each other and removes breaks between them.
+        """
+        for subject, times in self.subjects_.items():
+            sorted_times = sorted(times, key=lambda x: (x.weekday, x.start_time))
+            self.subjects_[subject] = sorted_times
+
+        for subject, times in list(self.subjects_.items()):  # Using list to copy items for safe iteration
+            merged_times = []
+            current_time_block = None
+            for time in times:
+                if current_time_block is None:
+                    # Initialize the first time block
+                    current_time_block = Time(time.weekday, time.start_time, time.room, time.duration)
+                else:
+                    # Check if the current time block can be merged with the next one
+                    if (time.weekday == current_time_block.weekday and
+                        time.start_time == current_time_block.start_time + current_time_block.duration):
+                        # Extend the current time block's duration
+                        current_time_block.duration += time.duration
+                    else:
+                        # Save the current time block and start a new one
+                        merged_times.append(current_time_block)
+                        current_time_block = Time(time.weekday, time.start_time, time.room, time.duration)
+            # Add the last time block
+            if current_time_block is not None:
+                merged_times.append(current_time_block)
+
+            self.subjects_[subject] = merged_times

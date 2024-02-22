@@ -24,6 +24,7 @@ def main():
     parser.add_argument("filename")
     parser.add_argument("-n", "--niceplan", action='store_true', help="Should a niceplan file be generated?")
     parser.add_argument("-i", "--ical", action='store_true', help="Should an ical file be generated?")
+    parser.add_argument("-m", "--merge", action='store_false', help="Merge same classes that are after each other")
     html_content = ""
     args = parser.parse_args()
     with open(args.filename, mode="r", encoding="utf-8") as html_file:
@@ -55,6 +56,10 @@ def main():
             subject = Subject(subject, type)
             schedule.add_class(subject, time)
         hour += 1
+    
+    if args.merge:
+        schedule.merge_blocks()
+
     if args.niceplan:
         with open("output_time_table.niceplan", "w", encoding="utf-8") as f:
             data = schedule.export_json_niceplan()
